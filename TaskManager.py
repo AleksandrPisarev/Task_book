@@ -7,9 +7,7 @@ class TaskManager:
         with open('source\\journal.json', 'r', encoding='utf-8') as file:
             for line in file:
                 dictionary = json.loads(line)
-                task = Task(dictionary['Задача'])
-                if task.is_done != dictionary['Статус']:
-                    task.mark_done()
+                task = Task(dictionary['Задача'], dictionary['Статус'])
                 self.__tasks.append(task)
 
     def write_file(self):

@@ -1,7 +1,7 @@
 class Task:
-    __is_done = "Не выполнено"
-    def __init__(self, title):
+    def __init__(self, title, is_done = "Не выполнено"):
         self.__title = title
+        self.__is_done = is_done
 
     def mark_done(self):
         self.__is_done = "Выполнено"
