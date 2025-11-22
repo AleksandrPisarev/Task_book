@@ -10,5 +10,9 @@ class Task:
     def title(self):
         return self.__title
 
+    @property
+    def is_done(self):
+        return self.__is_done
+
     def __str__(self):
         return f"{self.__title} - {self.__is_done}."

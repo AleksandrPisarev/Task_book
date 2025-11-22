@@ -1,12 +1,24 @@
 from Task import Task
+import json
 
 class TaskManager:
     __tasks = list()
     def __init__(self):
-        pass
+        with open('source\\journal.json', 'r', encoding='utf-8') as file:
+            for line in file:
+                dictionary = json.loads(line)
+                task = Task(dictionary['Задача'])
+                if task.is_done != dictionary['Статус']:
+                    task.mark_done()
+                self.__tasks.append(task)
 
-    def __del__(self):
-        pass
+    def write_file(self):
+        with open("source\\journal.json", "w", encoding="utf-8") as file:
+            for i in self.__tasks:
+                dictionary = {"Задача": i.title, "Статус": i.is_done}
+                json.dump(dictionary, file,  ensure_ascii=False)
+                file.write("\n")
+
 
     def add_task(self, title):
         self.__tasks.append(Task(title))

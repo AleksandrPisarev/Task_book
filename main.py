@@ -22,7 +22,10 @@ def menu(journal):
         case "add": journal.add_task(input("Введите название задачи: "))
         case "done": journal.mark_task_done(input("Введите название задачи: "))
         case "show": print(journal)
-        case "exit": exit()
+        case "exit":
+                    journal.write_file()
+                    print("Данные сохранены. Программа завершена.")
+                    exit()
 
 if __name__ == "__main__":
     journal = TaskManager()
